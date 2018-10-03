@@ -9,6 +9,7 @@
         <?php
         $this->load->view('master/header');
         $this->load->view('master/nav');
+        $this->load->view('master/js');
         ?>
         <div id="wrapper">
             <?php
@@ -26,16 +27,19 @@
                     <!-- /.container-fluid -->
                     <?php
                     $dashboard = base_url() . 'admin/index';
-                    $tKar = base_url() . 'admin/tambah_karyawan';
+                    $tKar = base_url() . 'Karyawan/tambah_karyawan';
+                    $eKar = base_url() . 'Karyawan/edit/' . $this->uri->segment(3);
                     $rkg = base_url() . 'admin/ranking';
                     $pk = base_url() . 'user/index';
-                    $nilai = base_url() . 'user/nilai/'.$this->uri->segment(3);
+                    $nilai = base_url() . 'user/nilai/' . $this->uri->segment(3);
                     $url = current_url();
                     //echo $url;
                     if ($url == $dashboard && $this->session->userdata('level') == 'admin') {
                         $this->load->view('admin/DataKaryawan');
                     } else if ($url == $tKar && $this->session->userdata('level') == 'admin') {
                         $this->load->view('admin/TambahKaryawan');
+                    } else if ($url == $eKar && $this->session->userdata('level') == 'admin') {
+                        $this->load->view('admin/EditKaryawan');
                     } else if ($url == $rkg && $this->session->userdata('level') == 'admin') {
                         $this->load->view('admin/Ranking');
                     } else if ($url == $pk && $this->session->userdata('level') == 'user') {
@@ -79,9 +83,7 @@
                 </div>
             </div>
         </div>
-        <?php
-        $this->load->view('master/js');
-        ?>
+
     </body>
 
 </html>

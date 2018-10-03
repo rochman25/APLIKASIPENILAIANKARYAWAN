@@ -30,40 +30,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    function tambah_karyawan() {
-        $this->load->view('master/dashboard');
-    }
-
-    function addKaryawan() {
-        $this->form_validation->set_rules('nik', 'Field Nik', 'required');
-        $this->form_validation->set_rules('nama', 'Field Nama', 'required');
-        $this->form_validation->set_rules('bagian', 'Field Bagian', 'required');
-        $this->form_validation->set_rules('username', 'Field username', 'required');
-        $this->form_validation->set_rules('password', 'Field Password', 'required');
-
-        $nik = $this->input->post('nik');
-        $nama = $this->input->post('nama');
-        $bagian = $this->input->post('bagian');
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('master/dashboard');
-        } else {
-            $data = array(
-                'nik' => $nik,
-                'nama' => $nama,
-                'bagian' => $bagian,
-                'username' => $username,
-                'password' => $password
-            );
-            $query = $this->DataModel->post_data('karyawan', $data);
-            if ($query == FALSE) {
-                echo "Tambah data gagal";
-            } else {
-                redirect('admin/index');
-            }
-        }
-    }
+    
 
     function ranking() {
         $this->load->view('master/dashboard');

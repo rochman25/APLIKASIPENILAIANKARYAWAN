@@ -52,21 +52,33 @@ class DataModel extends CI_Model {
     
     function insert($table,$data){
         $query = $this->db->insert($table,$data);
-        return $query;
+        return $query ? TRUE : FALSE;;
     }
     
     function insertMultiple($table,$data){
         $query = $this->db->insert_batch($table,$data);
         return $query;
     }
+    
+    function update($table, $where, $condition, $data){
+        $query = $this->db->where($where, $condition);
+        $query = $this->db->update($table, $data);
+        return $query;
+    }
+    
+    function delete($table, $where, $kondisi) {
+        $this->db->where($where, $kondisi);
+        $query = $this->db->delete($table);
+        return $query ? TRUE : FALSE;
+    }
 
     function Login($table, $where) {
         return $this->db->get_where($table, $where);
     }
 
-    public function post_data($table, $data) {
-        $query = $this->db->insert($table, $data);
-        return $query ? TRUE : FALSE;
-    }
+//    public function post_data($table, $data) {
+//        $query = $this->db->insert($table, $data);
+//        return $query ? TRUE : FALSE;
+//    }
 
 }

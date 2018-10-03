@@ -5,7 +5,7 @@
             <div class="card-content">
                 <!--                <h5 class="card-title text-left">Informasi Karyawan</h5>-->
                 <div class="form-card">
-                    <form action="<?= base_url(); ?>admin/addKaryawan " method="post">
+                    <form action="<?= base_url(); ?>Karyawan/addKaryawan " method="post">
                         <div class="form-group">
                             <div class="row" style="margin:10px">
                                 <div class="col-lg-3">
